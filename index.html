@@ -124,7 +124,7 @@
     let dayLine = document.getElementById("dayLine");
     var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     let day = new Date(yearNum.value,monthNum.value,dateNum.value);    
-    dayLine.innerHTML = `I got the day , it's<b>${days[day.getDay()]}</b>`;
+    dayLine.innerHTML = `I got the day , it's &nbsp;<b>${days[day.getDay()]}</b>`;
 });
   
 </script>
