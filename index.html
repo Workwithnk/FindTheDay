@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find the day</title>
+    <style>
+        *{
+        background-color: #2c3e50;
+    }
+        .container{
+            padding: 40px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            color: white;
+            border: 10px solid #95a5a6;
+            border-bottom-right-radius: 80px;
+            border-top-left-radius: 80px;
+        }
+        .container::before{
+            content: "";
+            position: absolute;
+            width:20%;
+            height: 10px;
+            background-color: #e67e22;
+            z-index: 999;
+            top: -10px;
+            left: 68px;
+            transition: 2s linear;
+        }
+        .container::after{
+            content: "";
+            position: absolute;
+            width: 20%;
+            height: 10px;
+            background-color: #e67e22;
+            z-index: 999;
+            right: 68px;
+            bottom: -10px;
+            transition: 2s linear;
+        }
+        .container:hover::before {
+            left: 50%;
+        }
+        .container:hover::after {
+            right: 50%;
+        }
+        .container input{
+            outline: none;
+            border: none;
+            background-color: #bdc3c7;
+            padding: 3px 3px;
+            margin: 2px 0px;
+            border-radius: 3px;
+            width: 200px;
+        }
+        .container label{
+            font-size: 22px;
+            margin-top: 5px;
+        }
+        .container span{
+            border-bottom: 1px solid gray;
+        }
+        #btn {
+            width: 80px;
+            padding: 3px 3px;
+            margin: 13px 0px;
+            background-color: #bdc3c7;
+            border: none;
+            color: #34495e;
+            font-size: 14px;
+            outline: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .container h2{
+            font-size: 33px;
+            font-family: cursive;
+            border-bottom: 1px solid #95a5a6;
+        }
+        .container a {
+            color: white;
+        }
+        .container span {
+             border-bottom:none; 
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
+        @media only screen and (max-width:450px){
+            .container span {
+                font-size: 1rem;
+            }
+            .container label {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Find your day  </h2>
+        <label>Year</label>
+        <input type="number" id="yearNum" placeholder="enter year here" required>
+        <label>Month</label>
+        <input type="number" id="monthNum" placeholder="enter month here" required>
+        <label>Date</label>
+        <input type="number" id="dateNum" placeholder="enter date here" required>
+        <button id="btn">SUBMIT</button>
+        <label id="dayLine" >Your looking day is <span id="Lokkingday">...</span></label>
+        <span> Directed & Created by : &nbsp;<a href="http://iamnk.ml/">Nk</a></span>
+          
+    </div>
+
+</body>
+<script>
+    let btn = document.getElementById("btn");
+    btn.addEventListener("click",function(){
+    let yearNum = document.getElementById("yearNum"); 
+    let monthNum = document.getElementById("monthNum"); 
+    let dateNum = document.getElementById("dateNum");   
+    let dayLine = document.getElementById("dayLine");
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let day = new Date(yearNum.value,monthNum.value,dateNum.value);    
+    dayLine.innerHTML = `I got the day , it's ${days[day.getDay()]}`;
+});
+  
+</script>
+</html>
